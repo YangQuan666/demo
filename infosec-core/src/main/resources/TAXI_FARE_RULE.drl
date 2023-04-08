@@ -1,0 +1,15 @@
+import infosec.core.model.Fare;
+import infosec.core.model.TaxiRide;
+import java.util.*;
+
+global infosec.core.model.Fare rideFare;
+
+dialect  "mvel"
+
+rule "Calculate Taxi Fare - Scenario"
+when
+    taxiRideInstance: TaxiRide(isNightSurcharge == false && distanceInMile < 10);
+then
+    rideFare.setRideFare(70L);
+    rideFare.setNightSurcharge(0L);
+ end
