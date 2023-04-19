@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Aspect
 @Component
@@ -44,7 +45,9 @@ public class LimitRaterAspect {
             if (rate < 0) {
                 return joinPoint.proceed();
             }
-            Boolean result = redisTemplate.execute(rateScript, List.of(annotation.key()), annotation.rate(), annotation.capacity(), annotation.acquire());
+            TimeUnit timeUnit = annotation.timeUnit();
+            long rateSeconds = timeUnit.toSeconds(rate);
+            Boolean result = redisTemplate.execute(rateScript, List.of(annotation.key()), rateSeconds, annotation.capacity(), annotation.acquire());
             if (result == null || !result) {
                 return null;
             }
