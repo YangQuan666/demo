@@ -22,8 +22,8 @@ repositories {
 extra["springCloudVersion"] = "2022.0.3-SNAPSHOT"
 
 dependencies {
-    implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
-    implementation("io.netty:netty-all:4.1.92.Final")
+    implementation("org.springframework.cloud:spring-cloud-starter-zookeeper-discovery")
+    implementation("io.netty:netty-all")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter")

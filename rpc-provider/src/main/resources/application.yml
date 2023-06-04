@@ -1,11 +1,8 @@
-spring:
-  application:
-    name: rpc-provider
-  cloud:
-    consul:
-      host: localhost
-      port: 8500
-      discovery:
-        register: false
 server:
-  port: 80
+  port: 8081
+spring:
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+      discovery:
+        instance-port: 1234
