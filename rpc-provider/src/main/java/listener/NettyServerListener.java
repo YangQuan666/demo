@@ -1,5 +1,8 @@
 package listener;
 
+import codec.RpcMessageDecoder;
+import codec.RpcMessageEncoder;
+import entity.RpcRequest;
 import handler.NettyRpcServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -34,7 +37,6 @@ public class NettyServerListener implements ApplicationListener<ContextRefreshed
     @Resource
     private ZookeeperDiscoveryProperties zookeeperDiscoveryProperties;
 
-    // todo 启动netty
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         init();
@@ -43,7 +45,6 @@ public class NettyServerListener implements ApplicationListener<ContextRefreshed
     private void init() {
         NioEventLoopGroup bossGroup = new NioEventLoopGroup();
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
-//        DefaultEventExecutorGroup serviceHandlerGroup = new DefaultEventExecutorGroup(Runtime.getRuntime().availableProcessors() * 2);
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup, workerGroup)
@@ -62,8 +63,8 @@ public class NettyServerListener implements ApplicationListener<ContextRefreshed
                             // 30 秒之内没有收到客户端请求的话就关闭连接
                             ChannelPipeline p = ch.pipeline();
                             p.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
-                            p.addLast(new RpcMessageEncoder());
-                            p.addLast(new RpcMessageDecoder());
+                            p.addLast(new RpcMessageEncoder(RpcRequest.class));
+                            p.addLast(new RpcMessageDecoder(RpcRequest.class));
                             p.addLast(new NettyRpcServerHandler(rpcServiceManager.getProviderBeanMap()));
                         }
                     });

@@ -2,7 +2,7 @@ plugins {
     id("java")
 }
 
-group = "org.example"
+group = "rpc.common"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    implementation("io.netty:netty-all:4.1.92.Final")
     implementation("io.protostuff:protostuff-core:1.8.0")
     implementation("io.protostuff:protostuff-runtime:1.8.0")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))

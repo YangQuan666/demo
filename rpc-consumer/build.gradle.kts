@@ -6,13 +6,13 @@ plugins {
 
 group = "rpc.provider"
 version = "1.0-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
     }
 }
+
 
 repositories {
     mavenCentral()

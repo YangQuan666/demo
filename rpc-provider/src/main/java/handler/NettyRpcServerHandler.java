@@ -38,7 +38,7 @@ public class NettyRpcServerHandler extends SimpleChannelInboundHandler<RpcReques
         RpcResponse rpcResponse = new RpcResponse();
         rpcResponse.setRequestId(rpcRequest.getRequestId());
         try {
-            Object result = handle(rpcRequest); // 核心处理方法 ↓
+            Object result = handle(rpcRequest);
             rpcResponse.setData(result);
         } catch (Exception e) {
             log.error("handle result failure", e);

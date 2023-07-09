@@ -1,4 +1,4 @@
-package service.impl;
+package service;
 
 import jakarta.annotation.Resource;
 import org.springframework.cloud.client.serviceregistry.ServiceRegistry;
@@ -6,10 +6,9 @@ import org.springframework.cloud.zookeeper.discovery.ZookeeperDiscoveryPropertie
 import org.springframework.cloud.zookeeper.serviceregistry.ServiceInstanceRegistration;
 import org.springframework.cloud.zookeeper.serviceregistry.ZookeeperRegistration;
 import org.springframework.stereotype.Service;
-import service.RpcRegistryService;
 
 @Service
-public class ZookeeperRegistryService implements RpcRegistryService {
+public class ZookeeperRegistryService {
 
     @Resource
     private ZookeeperDiscoveryProperties zookeeperDiscoveryProperties;
@@ -17,7 +16,6 @@ public class ZookeeperRegistryService implements RpcRegistryService {
     @Resource
     private ServiceRegistry<ZookeeperRegistration> zookeeperServiceRegistry;
 
-    @Override
     public void register(String name) {
         ServiceInstanceRegistration.RegistrationBuilder builder = ServiceInstanceRegistration.builder()
                 .name(name)
