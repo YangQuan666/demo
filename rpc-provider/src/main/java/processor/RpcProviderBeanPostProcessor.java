@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import service.RpcServiceManager;
 import service.ZookeeperRegistryService;
 
-@Component
 public class RpcProviderBeanPostProcessor implements BeanPostProcessor {
 
     @Resource

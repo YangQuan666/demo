@@ -1,17 +1,15 @@
 package processor;
 
 import annotation.RpcConsumer;
+import client.RpcProxy;
 import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.cloud.zookeeper.discovery.ZookeeperInstance;
-import org.springframework.stereotype.Component;
-import client.RpcProxy;
 
 import java.lang.reflect.Field;
 
-@Component
 public class RpcConsumerBeanPostProcessor implements BeanPostProcessor {
 
     @Autowired

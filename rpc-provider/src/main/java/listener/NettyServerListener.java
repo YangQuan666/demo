@@ -21,12 +21,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cloud.zookeeper.discovery.ZookeeperDiscoveryProperties;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.stereotype.Component;
 import service.RpcServiceManager;
 
 import java.util.concurrent.TimeUnit;
 
-@Component
 public class NettyServerListener implements ApplicationListener<ContextRefreshedEvent> {
 
     private static final Logger log = LoggerFactory.getLogger(NettyServerListener.class);

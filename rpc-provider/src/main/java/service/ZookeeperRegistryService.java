@@ -5,9 +5,7 @@ import org.springframework.cloud.client.serviceregistry.ServiceRegistry;
 import org.springframework.cloud.zookeeper.discovery.ZookeeperDiscoveryProperties;
 import org.springframework.cloud.zookeeper.serviceregistry.ServiceInstanceRegistration;
 import org.springframework.cloud.zookeeper.serviceregistry.ZookeeperRegistration;
-import org.springframework.stereotype.Service;
 
-@Service
 public class ZookeeperRegistryService {
 
     @Resource
