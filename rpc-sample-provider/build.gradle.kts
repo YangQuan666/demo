@@ -4,15 +4,15 @@ plugins {
     id("io.spring.dependency-management") version "1.1.0"
 }
 
-group = "rpc.provider"
+group = "org.example"
 version = "1.0-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
     }
 }
-
 
 repositories {
     mavenCentral()
@@ -22,12 +22,14 @@ repositories {
 extra["springCloudVersion"] = "2022.0.3-SNAPSHOT"
 
 dependencies {
+    implementation(project(":rpc-sample-api"))
+    implementation(project(":rpc-provider"))
     implementation(project(":rpc-common"))
     implementation("org.springframework.cloud:spring-cloud-starter-zookeeper-discovery")
     implementation("io.netty:netty-all")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter")
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

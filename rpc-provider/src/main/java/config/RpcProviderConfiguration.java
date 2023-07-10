@@ -10,9 +10,7 @@ import processor.RpcProviderBeanPostProcessor;
 import service.RpcServiceManager;
 import service.ZookeeperRegistryService;
 
-@ComponentScan({"listener", "processor", "service"})
 @Configuration
-@EnableAutoConfiguration
 public class RpcProviderConfiguration {
 
     @Bean

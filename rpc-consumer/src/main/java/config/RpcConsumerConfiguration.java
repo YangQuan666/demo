@@ -2,8 +2,10 @@ package config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import processor.RpcConsumerBeanPostProcessor;
 
+@Configuration
 public class RpcConsumerConfiguration {
 
     @Bean

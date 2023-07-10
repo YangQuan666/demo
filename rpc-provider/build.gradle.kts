@@ -26,7 +26,6 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-zookeeper-discovery")
     implementation("io.netty:netty-all")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
