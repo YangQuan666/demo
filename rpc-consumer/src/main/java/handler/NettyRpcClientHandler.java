@@ -51,7 +51,7 @@ public class NettyRpcClientHandler extends SimpleChannelInboundHandler<RpcRespon
                     ChannelPipeline pipeline = socketChannel.pipeline();
                     pipeline.addLast(new RpcMessageEncoder(RpcRequest.class)); // 编码器
                     pipeline.addLast(new RpcMessageDecoder(RpcResponse.class)); // 解码器
-                    pipeline.addLast(this); // 处理 RPC 响应
+                    pipeline.addLast(NettyRpcClientHandler.this); // 处理 RPC 响应
                 }
             });
             bootstrap.option(ChannelOption.TCP_NODELAY, true);
