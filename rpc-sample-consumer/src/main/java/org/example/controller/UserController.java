@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import service.UserService;
 
 @RestController
-@ResponseBody
 @RequestMapping("/user")
 public class UserController {
 

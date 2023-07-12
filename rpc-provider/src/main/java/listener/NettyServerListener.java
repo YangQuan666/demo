@@ -3,6 +3,7 @@ package listener;
 import codec.RpcMessageDecoder;
 import codec.RpcMessageEncoder;
 import entity.RpcRequest;
+import entity.RpcResponse;
 import handler.NettyRpcServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -37,7 +38,8 @@ public class NettyServerListener implements ApplicationListener<ContextRefreshed
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        init();
+        new Thread(this::init).start();
+//        init();
     }
 
     private void init() {
@@ -61,7 +63,7 @@ public class NettyServerListener implements ApplicationListener<ContextRefreshed
                             // 30 秒之内没有收到客户端请求的话就关闭连接
                             ChannelPipeline p = ch.pipeline();
                             p.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
-                            p.addLast(new RpcMessageEncoder(RpcRequest.class));
+                            p.addLast(new RpcMessageEncoder(RpcResponse.class));
                             p.addLast(new RpcMessageDecoder(RpcRequest.class));
                             p.addLast(new NettyRpcServerHandler(rpcServiceManager.getProviderBeanMap()));
                         }
