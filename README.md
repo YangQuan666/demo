@@ -27,7 +27,23 @@
    cd apache-zookeeper-3.7.1-bin/bin
    ./zkCli.sh -server 127.0.0.1:2181
    ```
-2. 启动rpc-server
-    1. 发布服务
+2. 启动rpc-server: 
+   - 入口: `RpcSampleProviderApplication`
+   - 本地服务端口: `8081`
+   - netty服务端监听端口: `1234`
 3. 启动rpc-consumer
-    1. 调用服务
+   - 入口: `RpcSampleConsumerApplication`
+   - 本地服务端口: `8082`
+   - http接口1
+   ```http request
+   GET http://localhost:8082/user/{{name}}/{{age}}
+   ```
+   - http接口2
+   ```http request
+   POST http://localhost:8082/user
+   
+   {
+   "name": "quan",
+   "age": 22
+   }
+   ```
