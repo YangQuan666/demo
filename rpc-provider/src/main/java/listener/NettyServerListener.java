@@ -39,7 +39,6 @@ public class NettyServerListener implements ApplicationListener<ContextRefreshed
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         new Thread(this::init).start();
-//        init();
     }
 
     private void init() {
